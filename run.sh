@@ -4,9 +4,8 @@ set -x
 
 exec 3>&1 4>&2
 trap 'exec 2>&4 1>&3' 0 1 2 3
-exec 1>exprtk_perftest.log 2>&1
+exec 1>exprtk_perftest_`date "+%Y%m%d%H%M%S"`.log 2>&1
 
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 # Define compiler
 
@@ -16,13 +15,15 @@ else
     export CC='g++-6'
 fi
 
+
+
 # Compile benchmarks
 
 make clean all
 
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
-# Run vector benchmarks - param: vector size
+
+# Run vector benchmarks - parameter: vector size
 
 ./exprtk_vector_benchmark 1000
 ./exprtk_vector_benchmark 5000
@@ -35,25 +36,22 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 ./exprtk_vector_benchmark 10000000
 ./exprtk_vector_benchmark 50000000
 
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
 
 # Run general computation benchmark
 
 ./exprtk_benchmark
 
 
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 # Dump os/kernal version info
 
 uname -a
 
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
 
 # Dump CPU details
 
 lscpu
 
 cat /proc/cpuinfo
-
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
