@@ -16,15 +16,18 @@ else
 fi
 
 
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
 # Compile benchmarks
 
 make clean all
 
-
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
 # Run vector benchmarks - parameter: vector size
 
+./exprtk_vector_benchmark 100
+./exprtk_vector_benchmark 500
 ./exprtk_vector_benchmark 1000
 ./exprtk_vector_benchmark 5000
 ./exprtk_vector_benchmark 10000
@@ -36,22 +39,24 @@ make clean all
 ./exprtk_vector_benchmark 10000000
 ./exprtk_vector_benchmark 50000000
 
-
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
 # Run general computation benchmark
 
 ./exprtk_benchmark
 
-
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
 # Dump os/kernal version info
 
 uname -a
 
-
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
 # Dump CPU details
 
 lscpu
 
 cat /proc/cpuinfo
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
